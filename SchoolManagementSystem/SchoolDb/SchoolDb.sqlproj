@@ -57,9 +57,13 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="dbo" />
+    <Folder Include="profiles\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Students.sql" />
     <Build Include="dbo\Teachers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="profiles\SchoolDb.publish.xml" />
   </ItemGroup>
 </Project>
