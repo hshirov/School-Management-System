@@ -61,4 +61,7 @@
   <ItemGroup>
     <Build Include="dbo\Students.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="SchoolDB.publish.xml" />
+  </ItemGroup>
 </Project>
