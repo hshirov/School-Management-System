@@ -47,7 +47,6 @@ namespace SchoolManagementSystem.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult LogOut()
         {
             Session.Abandon();

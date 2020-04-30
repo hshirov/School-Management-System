@@ -26,38 +26,7 @@ namespace SchoolManagementSystem.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult CreateStudent(Student student)
-        {
-            if (ModelState.IsValid)
-            {
-                using(SchoolDbContext db = new SchoolDbContext())
-                {
-                    db.Students.Add(student);
-                    db.SaveChanges();
-                }
-                Session["studentID"] = student.Id;
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CreateTeacher(Teacher teacher)
-        {
-            if (ModelState.IsValid)
-            {
-                using (SchoolDbContext db = new SchoolDbContext())
-                {
-                    db.Teachers.Add(teacher);
-                    db.SaveChanges();
-                }
-                Session["teacherID"] = teacher.Id;
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
-
+        
         [AcceptVerbs("GET", "POST")]
         public ActionResult VerifyEmail(string email)
         {
@@ -74,6 +43,37 @@ namespace SchoolManagementSystem.Controllers
             }
 
             return Json(true);
+        }
+
+        [HttpPost]
+        public ActionResult CreateStudent(Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                using (SchoolDbContext db = new SchoolDbContext())
+                {
+                    db.Students.Add(student);
+                    db.SaveChanges();
+                }
+                Session["studentID"] = student.Id;
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult CreateTeacher(Teacher teacher)
+        {
+            if (ModelState.IsValid)
+            {
+                using (SchoolDbContext db = new SchoolDbContext())
+                {
+                    db.Teachers.Add(teacher);
+                    db.SaveChanges();
+                }
+                Session["teacherID"] = teacher.Id;
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
         }
     }
 }
