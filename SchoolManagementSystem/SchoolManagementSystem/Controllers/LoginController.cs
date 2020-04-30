@@ -38,6 +38,7 @@ namespace SchoolManagementSystem.Controllers
                 }
                 else if(teacherDetails != null)
                 {
+                    //teacher found
                     Session["teacherID"] = teacherDetails.Id;
                     return RedirectToAction("Index", "Home");
                 }
