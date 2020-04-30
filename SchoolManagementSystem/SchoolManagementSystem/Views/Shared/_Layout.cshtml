@@ -8,7 +8,18 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @Html.Partial("_DefaultNavBar");
+    @if (Session["studentID"] == null && Session["teacherID"] == null)
+    {
+        @Html.Partial("_DefaultNavBar");
+    }
+    else if (Session["studentID"] != null)
+    {
+        @Html.Partial("_StudentNavBar");
+    }
+    else if (Session["teacherID"] != null)
+    {
+        @Html.Partial("_TeacherNavBar");
+    }
     <div class="container body-content">
         @RenderBody()
         <hr />
