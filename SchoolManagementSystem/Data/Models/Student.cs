@@ -20,7 +20,7 @@ namespace Data.Models
         public string Email { get; set; }
 
         [DisplayName("Password")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Password is Required.")]
         [DataType(DataType.Password)]
         public string PasswordHash { get; set; }
 
