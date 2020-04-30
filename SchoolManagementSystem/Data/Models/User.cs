@@ -18,5 +18,6 @@ namespace Data.Models
         [Required(ErrorMessage = "This field is required.")]
         [DataType(DataType.Password)]
         public string PasswordHash { get; set; }
+        public string LoginErrorMesasge { get; set; }
     }
 }

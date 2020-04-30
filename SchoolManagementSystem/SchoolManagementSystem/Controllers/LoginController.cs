@@ -27,6 +27,8 @@ namespace SchoolManagementSystem.Controllers
                 if (studentDetails == null && teacherDetails == null)
                 {
                     //user not found
+                    user.LoginErrorMesasge = "User not found.";
+                    return View("Index", user);
                 }
                 else if (studentDetails != null)
                 {
@@ -40,7 +42,15 @@ namespace SchoolManagementSystem.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
+
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Login");
         }
     }
 }
