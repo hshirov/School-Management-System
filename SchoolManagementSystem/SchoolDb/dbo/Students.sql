@@ -7,5 +7,5 @@
 	[PasswordHash] VARCHAR(50) NOT NULL,
 	[Mobile] VARCHAR(10) NOT NULL,
 	[ClassNumber] INT NOT NULL,
-	[ClassLetter] INT NOT NULL
+	[ClassLetter] VARCHAR(2) NOT NULL
 )
