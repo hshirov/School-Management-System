@@ -73,7 +73,7 @@ namespace SchoolManagementSystem.Controllers
                 Session["teacherID"] = teacher.Id;
                 return RedirectToAction("Index", "Home");
             }
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
