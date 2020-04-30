@@ -10,6 +10,10 @@ namespace SchoolManagementSystem.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["studentID"] == null && Session["teacherID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
