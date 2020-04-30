@@ -16,6 +16,7 @@ namespace Data.Models
         public string LastName { get; set; }
 
         [DisplayName("Email")]
+        [EmailAddress]
         [Required(ErrorMessage = "Email is Required.")]
         public string Email { get; set; }
 
@@ -25,6 +26,7 @@ namespace Data.Models
         public string PasswordHash { get; set; }
 
         [DisplayName("Mobile")]
+        [Phone]
         [Required(ErrorMessage = "Mobile is Required.")]
         public string Mobile { get; set; }
 
