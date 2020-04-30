@@ -11,11 +11,11 @@ namespace Data.Models
     public class User
     {
         [DisplayName("Email")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Email is Required.")]
         public string Email { get; set; }
 
         [DisplayName("Password")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Password is Required.")]
         [DataType(DataType.Password)]
         public string PasswordHash { get; set; }
         public string LoginErrorMessage { get; set; }
