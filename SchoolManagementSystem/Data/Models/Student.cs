@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Data.Models
 {
@@ -20,6 +21,7 @@ namespace Data.Models
         [DisplayName("Email")]
         [EmailAddress]
         [Required(ErrorMessage = "Email is Required.")]
+        [Remote(action: "VerifyEmail", controller: "Register")]
         public string Email { get; set; }
 
         [DisplayName("Password")]
@@ -31,6 +33,7 @@ namespace Data.Models
         [DisplayName("Mobile")]
         [Phone]
         [Required(ErrorMessage = "Mobile is Required.")]
+        [StringLength(10, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 9)]
         public string Mobile { get; set; }
 
         [DisplayName("Class Number")]
