@@ -21,8 +21,8 @@ namespace SchoolManagementSystem.Controllers
         {
             using(SchoolDbContext db = new SchoolDbContext())
             {
-                var studentDetails = db.students.Where(x => x.Email == user.Email && x.PasswordHash == user.PasswordHash).FirstOrDefault();
-                var teacherDetails = db.teachers.Where(x => x.Email == user.Email && x.PasswordHash == user.PasswordHash).FirstOrDefault();
+                var studentDetails = db.Students.Where(x => x.Email == user.Email && x.PasswordHash == user.PasswordHash).FirstOrDefault();
+                var teacherDetails = db.Teachers.Where(x => x.Email == user.Email && x.PasswordHash == user.PasswordHash).FirstOrDefault();
 
                 if (studentDetails == null && teacherDetails == null)
                 {
