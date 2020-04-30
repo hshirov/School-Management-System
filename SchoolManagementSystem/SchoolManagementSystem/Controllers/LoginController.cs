@@ -27,7 +27,7 @@ namespace SchoolManagementSystem.Controllers
                 if (studentDetails == null && teacherDetails == null)
                 {
                     //user not found
-                    user.LoginErrorMesasge = "User not found.";
+                    user.LoginErrorMessage = "User not found.";
                     return View("Index", user);
                 }
                 else if (studentDetails != null)
