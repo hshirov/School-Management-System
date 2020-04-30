@@ -27,7 +27,6 @@ namespace SchoolManagementSystem.Controllers
         }
 
         
-        [AcceptVerbs("GET", "POST")]
         public ActionResult VerifyEmail(string email)
         {
             using(SchoolDbContext db = new SchoolDbContext())

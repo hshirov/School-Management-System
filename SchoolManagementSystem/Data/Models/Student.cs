@@ -21,7 +21,6 @@ namespace Data.Models
         [DisplayName("Email")]
         [EmailAddress]
         [Required(ErrorMessage = "Email is Required.")]
-        //[Remote(action: "VerifyEmail", controller: "Register")]
         public string Email { get; set; }
 
         [DisplayName("Password")]
