@@ -45,13 +45,9 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <p>Don't have an account?</p>
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.ActionLink("Register as student", "Student", "Register")
-                    <span>OR</span>
-                    @Html.ActionLink("Register as teacher", "Teacher", "Register")
-                </div>
-            </div>
+            @Html.ActionLink("Register as student", "Student", "Register")
+            <span>OR</span>
+            @Html.ActionLink("Register as teacher", "Teacher", "Register")
         </div>
     </div>
 </div>
