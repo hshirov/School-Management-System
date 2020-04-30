@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class SchoolDbContext : DbContext
+    public class SchoolDbContext : DbContext
     {
         public SchoolDbContext() : base("SchoolDb") { }
         public DbSet<Student> students { get; set; }
