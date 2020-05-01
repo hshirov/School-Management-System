@@ -25,6 +25,29 @@ namespace Business
                 return student;
             }
         }
+        public Student GetStudent(int id)
+        {
+            using (dbContext = new SchoolDbContext())
+            {
+                Student student = dbContext.Students.Where(x => x.Id == id).FirstOrDefault();
+                return student;
+            }
+        }
+
+        public Person GetPerson(int id)
+        {
+            Student student = GetStudent(id);
+            Person person = new Person
+            {
+                Id = student.Id,
+                FirstName = student.FirstName,
+                LastName = student.LastName,
+                Email = student.Email,
+                Mobile = student.Mobile
+            };
+
+            return person;
+        }
 
         public bool IsEmailInUse(string email)
         {

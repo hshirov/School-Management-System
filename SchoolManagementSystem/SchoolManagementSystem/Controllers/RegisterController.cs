@@ -11,8 +11,8 @@ namespace SchoolManagementSystem.Controllers
 {
     public class RegisterController : Controller
     {
-        private StudentBLL StudentBLL = new StudentBLL();
-        private TeacherBLL TeacherBLL = new TeacherBLL();
+        private StudentBLL studentBLL = new StudentBLL();
+        private TeacherBLL teacherBLL = new TeacherBLL();
 
         // GET: Register
         public ActionResult Index()
@@ -44,11 +44,11 @@ namespace SchoolManagementSystem.Controllers
         {
             using(SchoolDbContext db = new SchoolDbContext())
             {
-                if(StudentBLL.IsEmailInUse(email))
+                if(studentBLL.IsEmailInUse(email))
                 {
                     return Json(false, JsonRequestBehavior.AllowGet);
                 }
-                else if(TeacherBLL.IsEmailInUse(email))
+                else if(teacherBLL.IsEmailInUse(email))
                 {
                     return Json(false, JsonRequestBehavior.AllowGet);
                 }
@@ -62,7 +62,7 @@ namespace SchoolManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                StudentBLL.AddStudent(student);
+                studentBLL.AddStudent(student);
                 Session["studentID"] = student.Id;
                 return RedirectToAction("Index", "Home");
             }
@@ -73,7 +73,7 @@ namespace SchoolManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                TeacherBLL.AddTeacher(teacher);
+                teacherBLL.AddTeacher(teacher);
                 Session["teacherID"] = teacher.Id;
                 return RedirectToAction("Index", "Home");
             }

@@ -11,8 +11,8 @@ namespace SchoolManagementSystem.Controllers
 {
     public class LoginController : Controller
     {
-        private StudentBLL StudentBLL = new StudentBLL();
-        private TeacherBLL TeacherBLL = new TeacherBLL();
+        private StudentBLL studentBLL = new StudentBLL();
+        private TeacherBLL teacherBLL = new TeacherBLL();
 
         // GET: Login
         public ActionResult Index()
@@ -30,8 +30,8 @@ namespace SchoolManagementSystem.Controllers
         {
             using(SchoolDbContext db = new SchoolDbContext())
             {
-                var studentDetails = StudentBLL.GetStudent(user);
-                var teacherDetails = TeacherBLL.GetTeacher(user);
+                var studentDetails = studentBLL.GetStudent(user);
+                var teacherDetails = teacherBLL.GetTeacher(user);
 
                 if (studentDetails == null && teacherDetails == null)
                 {
