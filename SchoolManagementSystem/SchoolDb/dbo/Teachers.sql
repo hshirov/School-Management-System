@@ -4,7 +4,7 @@
 	[FirstName] VARCHAR(50) NOT NULL,
 	[LastName] VARCHAR(50) NOT NULL,
 	[Email] VARCHAR(50) NOT NULL,
-	[PasswordHash] VARCHAR(50) NOT NULL,
+	[PasswordHash] VARCHAR(64) NOT NULL,
 	[Mobile] VARCHAR(10) NOT NULL,
 	[Subject] VARCHAR(50) NOT NULL
 )

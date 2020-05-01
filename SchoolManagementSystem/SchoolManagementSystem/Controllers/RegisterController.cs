@@ -62,11 +62,7 @@ namespace SchoolManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (SchoolDbContext db = new SchoolDbContext())
-                {
-                    db.Students.Add(student);
-                    db.SaveChanges();
-                }
+                StudentBLL.AddStudent(student);
                 Session["studentID"] = student.Id;
                 return RedirectToAction("Index", "Home");
             }
@@ -77,11 +73,7 @@ namespace SchoolManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (SchoolDbContext db = new SchoolDbContext())
-                {
-                    db.Teachers.Add(teacher);
-                    db.SaveChanges();
-                }
+                TeacherBLL.AddTeacher(teacher);
                 Session["teacherID"] = teacher.Id;
                 return RedirectToAction("Index", "Home");
             }

@@ -29,7 +29,7 @@ namespace Data.Models
         [DisplayName("Password")]
         [Required(ErrorMessage = "Password is Required.")]
         [DataType(DataType.Password)]
-        [StringLength(30, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 5)]
+        [StringLength(64, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 5)]
         public string PasswordHash { get; set; }
 
         [DisplayName("Mobile")]

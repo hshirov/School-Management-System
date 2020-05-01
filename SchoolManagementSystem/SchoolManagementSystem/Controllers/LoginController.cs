@@ -13,6 +13,7 @@ namespace SchoolManagementSystem.Controllers
     {
         private StudentBLL StudentBLL = new StudentBLL();
         private TeacherBLL TeacherBLL = new TeacherBLL();
+
         // GET: Login
         public ActionResult Index()
         {

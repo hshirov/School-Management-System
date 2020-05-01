@@ -32,5 +32,15 @@ namespace Business
                 return dbContext.Students.Any(x => x.Email == email);
             }
         }
+
+        public void AddStudent(Student student)
+        {
+            student.PasswordHash = UserBLL.GetStringSha256Hash(student.PasswordHash);
+            using (dbContext = new SchoolDbContext())
+            {
+                dbContext.Students.Add(student);
+                dbContext.SaveChanges();
+            }
+        }
     }
 }
