@@ -15,7 +15,12 @@ namespace SchoolManagementSystem.Controllers
         private TeacherBLL TeacherBLL = new TeacherBLL();
         // GET: Login
         public ActionResult Index()
-        {           
+        {
+            //If you're logged in, you can't access this view
+            if (Session["studentID"] != null || Session["teacherID"] != null) 
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 

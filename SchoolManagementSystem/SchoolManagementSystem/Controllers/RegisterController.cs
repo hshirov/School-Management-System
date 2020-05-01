@@ -22,14 +22,23 @@ namespace SchoolManagementSystem.Controllers
 
         public ActionResult Student()
         {
+            //If you're logged in, you can't access this view
+            if (Session["studentID"] != null || Session["teacherID"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         public ActionResult Teacher()
         {
+            //If you're logged in, you can't access this view
+            if (Session["studentID"] != null || Session["teacherID"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
-
         
         public JsonResult VerifyEmail(string email)
         {
