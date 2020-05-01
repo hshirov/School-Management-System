@@ -27,21 +27,21 @@ namespace SchoolManagementSystem.Controllers
         }
 
         
-        public ActionResult VerifyEmail(string email)
+        public JsonResult VerifyEmail(string email)
         {
             using(SchoolDbContext db = new SchoolDbContext())
             {
                 if(db.Students.Any(x => x.Email == email))
                 {
-                    return Json($"Email {email} is already in use.");
+                    return Json(false, JsonRequestBehavior.AllowGet);
                 }
                 else if(db.Teachers.Any(x => x.Email == email))
                 {
-                    return Json($"Email {email} is already in use.");
+                    return Json(false, JsonRequestBehavior.AllowGet);
                 }
             }
 
-            return Json(true);
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

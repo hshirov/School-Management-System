@@ -2,6 +2,7 @@
 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Data.Models
 {
@@ -22,6 +23,7 @@ namespace Data.Models
         [DisplayName("Email")]
         [EmailAddress]
         [Required(ErrorMessage = "Email is Required.")]
+        [Remote("VerifyEmail", "Register", ErrorMessage = "Email already in use.")]
         public string Email { get; set; }
 
         [DisplayName("Password")]
