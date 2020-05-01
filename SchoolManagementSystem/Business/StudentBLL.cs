@@ -18,9 +18,10 @@ namespace Business
         /// <param name="user">Stores email and password.</param>
         public Student GetStudent(User user)
         {
+            string password = UserBLL.GetStringSha256Hash(user.PasswordHash);
             using (dbContext = new SchoolDbContext())
             {
-                Student student = dbContext.Students.Where(x => x.Email == user.Email && x.PasswordHash == user.PasswordHash).FirstOrDefault();
+                Student student = dbContext.Students.Where(x => x.Email == user.Email && x.PasswordHash == password).FirstOrDefault();
                 return student;
             }
         }
