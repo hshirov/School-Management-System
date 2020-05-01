@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using Business;
+using Data;
 using Data.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ namespace SchoolManagementSystem.Controllers
 {
     public class RegisterController : Controller
     {
+        private StudentBLL StudentBLL = new StudentBLL();
+        private TeacherBLL TeacherBLL = new TeacherBLL();
+
         // GET: Register
         public ActionResult Index()
         {
@@ -31,11 +35,11 @@ namespace SchoolManagementSystem.Controllers
         {
             using(SchoolDbContext db = new SchoolDbContext())
             {
-                if(db.Students.Any(x => x.Email == email))
+                if(StudentBLL.IsEmailInUse(email))
                 {
                     return Json(false, JsonRequestBehavior.AllowGet);
                 }
-                else if(db.Teachers.Any(x => x.Email == email))
+                else if(TeacherBLL.IsEmailInUse(email))
                 {
                     return Json(false, JsonRequestBehavior.AllowGet);
                 }

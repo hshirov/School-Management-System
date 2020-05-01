@@ -5,11 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Data;
+using Business;
 
 namespace SchoolManagementSystem.Controllers
 {
     public class LoginController : Controller
     {
+        private StudentBLL StudentBLL = new StudentBLL();
+        private TeacherBLL TeacherBLL = new TeacherBLL();
         // GET: Login
         public ActionResult Index()
         {           
@@ -21,13 +24,13 @@ namespace SchoolManagementSystem.Controllers
         {
             using(SchoolDbContext db = new SchoolDbContext())
             {
-                var studentDetails = db.Students.Where(x => x.Email == user.Email && x.PasswordHash == user.PasswordHash).FirstOrDefault();
-                var teacherDetails = db.Teachers.Where(x => x.Email == user.Email && x.PasswordHash == user.PasswordHash).FirstOrDefault();
+                var studentDetails = StudentBLL.GetStudent(user);
+                var teacherDetails = TeacherBLL.GetTeacher(user);
 
                 if (studentDetails == null && teacherDetails == null)
                 {
                     //user not found
-                    user.LoginErrorMessage = "User not found.";
+                    user.LoginErrorMessage = "Wrong email or password.";
                     return View("Index", user);
                 }
                 else if (studentDetails != null)
