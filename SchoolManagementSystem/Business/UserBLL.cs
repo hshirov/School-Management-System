@@ -2,7 +2,7 @@
 
 namespace Business
 {
-    public class UserBLL
+    public class UserBll
     {
         public static string GetStringSha256Hash(string text)
         {

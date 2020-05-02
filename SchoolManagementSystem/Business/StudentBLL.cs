@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Business
 {
-    public class StudentBLL
+    public class StudentBll
     {
-        private SchoolDbContext dbContext;
+        private SchoolDbContext _dbContext;
 
         /// <summary>
         /// Finds the first student in the table based on the given email and password in User.
@@ -14,18 +14,18 @@ namespace Business
         /// <param name="user">Stores email and password.</param>
         public Student GetStudent(User user)
         {
-            string password = UserBLL.GetStringSha256Hash(user.PasswordHash);
-            using (dbContext = new SchoolDbContext())
+            string password = UserBll.GetStringSha256Hash(user.PasswordHash);
+            using (_dbContext = new SchoolDbContext())
             {
-                Student student = dbContext.Students.Where(x => x.Email == user.Email && x.PasswordHash == password).FirstOrDefault();
+                Student student = _dbContext.Students.Where(x => x.Email == user.Email && x.PasswordHash == password).FirstOrDefault();
                 return student;
             }
         }
         public Student GetStudent(int id)
         {
-            using (dbContext = new SchoolDbContext())
+            using (_dbContext = new SchoolDbContext())
             {
-                Student student = dbContext.Students.Where(x => x.Id == id).FirstOrDefault();
+                Student student = _dbContext.Students.Where(x => x.Id == id).FirstOrDefault();
                 return student;
             }
         }
@@ -50,19 +50,19 @@ namespace Business
 
         public bool IsEmailInUse(string email)
         {
-            using (dbContext = new SchoolDbContext())
+            using (_dbContext = new SchoolDbContext())
             {
-                return dbContext.Students.Any(x => x.Email == email);
+                return _dbContext.Students.Any(x => x.Email == email);
             }
         }
 
         public void AddStudent(Student student)
         {
-            student.PasswordHash = UserBLL.GetStringSha256Hash(student.PasswordHash);
-            using (dbContext = new SchoolDbContext())
+            student.PasswordHash = UserBll.GetStringSha256Hash(student.PasswordHash);
+            using (_dbContext = new SchoolDbContext())
             {
-                dbContext.Students.Add(student);
-                dbContext.SaveChanges();
+                _dbContext.Students.Add(student);
+                _dbContext.SaveChanges();
             }
         }
     }

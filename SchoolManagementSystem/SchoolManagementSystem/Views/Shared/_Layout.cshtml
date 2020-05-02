@@ -10,15 +10,15 @@
 <body>
     @if (Session["studentID"] == null && Session["teacherID"] == null)
     {
-        @Html.Partial("_DefaultNavBar");
+        @Html.Partial("_DefaultNavBar")
     }
     else if (Session["studentID"] != null)
     {
-        @Html.Partial("_StudentNavBar");
+        @Html.Partial("_StudentNavBar")
     }
     else if (Session["teacherID"] != null)
     {
-        @Html.Partial("_TeacherNavBar");
+        @Html.Partial("_TeacherNavBar")
     }
     <div class="container body-content">
         @RenderBody()

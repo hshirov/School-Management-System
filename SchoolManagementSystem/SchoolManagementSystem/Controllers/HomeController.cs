@@ -5,8 +5,8 @@ namespace SchoolManagementSystem.Controllers
 {    
     public class HomeController : Controller
     {
-        private StudentBLL studentBLL = new StudentBLL();
-        private TeacherBLL teacherBLL = new TeacherBLL();
+        private readonly StudentBll _studentBll = new StudentBll();
+        private readonly TeacherBll _teacherBll = new TeacherBll();
 
         public ActionResult Index()
         {
@@ -16,11 +16,11 @@ namespace SchoolManagementSystem.Controllers
             }
             else if (Session["studentID"] != null)
             {
-                return View(studentBLL.GetPerson((int)Session["studentID"]));
+                return View(_studentBll.GetPerson((int)Session["studentID"]));
             }
             else 
             {
-                return View(teacherBLL.GetPerson((int)Session["teacherID"]));
+                return View(_teacherBll.GetPerson((int)Session["teacherID"]));
             }            
         }
         public ActionResult Class()
