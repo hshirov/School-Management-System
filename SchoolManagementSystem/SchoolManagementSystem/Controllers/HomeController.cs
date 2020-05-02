@@ -30,7 +30,7 @@ namespace SchoolManagementSystem.Controllers
         public ActionResult Class()
         {
             //Rewrite
-            return RedirectToAction("Index", "Home");
+            return View(studentBLL.GetStudentsFromClass((int)Session["studentID"]));
         }
         public ActionResult Messages()
         {

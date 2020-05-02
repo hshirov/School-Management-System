@@ -47,7 +47,8 @@ namespace Business
                 FirstName = teacher.FirstName,
                 LastName = teacher.LastName,
                 Email = teacher.Email,
-                Mobile = teacher.Mobile
+                Mobile = teacher.Mobile,
+                Role = "Teacher"
             };
 
             return person;
