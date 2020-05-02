@@ -13,15 +13,13 @@ namespace SchoolManagementSystem.Controllers
             if (Session["studentID"] == null && Session["teacherID"] == null)
             {
                 return RedirectToAction("Index", "Login");
-            }
-            else if (Session["studentID"] != null)
+            } 
+
+            if (Session["studentID"] != null)
             {
                 return View(_studentBll.GetPerson((int)Session["studentID"]));
-            }
-            else 
-            {
-                return View(_teacherBll.GetPerson((int)Session["teacherID"]));
-            }            
+            } 
+            return View(_teacherBll.GetPerson((int)Session["teacherID"]));
         }
         public ActionResult Class()
         {
