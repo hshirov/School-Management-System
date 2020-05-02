@@ -6,8 +6,8 @@ namespace Business
     {
         public static string GetStringSha256Hash(string text)
         {
-            if (String.IsNullOrEmpty(text))
-                return String.Empty;
+            if (string.IsNullOrEmpty(text))
+                return string.Empty;
 
             using (var sha = new System.Security.Cryptography.SHA256Managed())
             {

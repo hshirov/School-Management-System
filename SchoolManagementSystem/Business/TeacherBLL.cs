@@ -17,7 +17,7 @@ namespace Business
             string password = UserBll.GetStringSha256Hash(user.PasswordHash);
             using (_dbContext = new SchoolDbContext())
             {
-                Teacher teacher = _dbContext.Teachers.Where(x => x.Email == user.Email && x.PasswordHash == password).FirstOrDefault();
+                Teacher teacher = _dbContext.Teachers.FirstOrDefault(x => x.Email == user.Email && x.PasswordHash == password);
                 return teacher;
             }
         }
@@ -26,13 +26,13 @@ namespace Business
         {
             using (_dbContext = new SchoolDbContext())
             {
-                Teacher teacher = _dbContext.Teachers.Where(x => x.Id == id).FirstOrDefault();
+                Teacher teacher = _dbContext.Teachers.FirstOrDefault(x => x.Id == id);
                 return teacher;
             }
         }
 
         /// <summary>
-        /// Turns a instance of Teacher to a Person, which holds all the metching parameters from students and teachers
+        /// Turns a instance of Teacher to a Person, which holds all the matching parameters from students and teachers
         /// </summary>
         public Person GetPerson(int id)
         {
