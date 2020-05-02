@@ -1,7 +1,7 @@
 ﻿@model Data.Models.Student
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Register student";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -50,7 +50,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", @pattern = "^[0–9]$"} })
             @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -81,7 +81,7 @@
                 new SelectListItem { Text = "M", Value = "M" },
                 new SelectListItem { Text = "N", Value = "N" },
                 new SelectListItem { Text = "O", Value = "O" },
-                new SelectListItem { Text = "P", Value = "P" },
+                new SelectListItem { Text = "P", Value = "P" }
             }, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.ClassLetter, "", new { @class = "text-danger" })
         </div>

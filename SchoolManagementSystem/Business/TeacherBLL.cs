@@ -35,6 +35,9 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Turns a instance of Teacher to a Person, which holds all the metching parameters from students and teachers
+        /// </summary>
         public Person GetPerson(int id)
         {
             Teacher teacher = GetTeacher(id);
