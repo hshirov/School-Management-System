@@ -3,6 +3,14 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Welcome, @Model.FirstName</h1>
-</div>
+    <div class="jumbotron">
+        <h1>Welcome, @Model.FirstName</h1>
+        @if (Session["studentID"] != null)
+        {
+            <p>You are logged in as Student.</p>
+        }
+        @if (Session["teacherID"] != null)
+        {
+            <p>You are logged in as Teacher.</p>
+        }
+    </div>

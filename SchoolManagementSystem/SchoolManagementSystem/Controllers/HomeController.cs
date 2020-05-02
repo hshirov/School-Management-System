@@ -27,5 +27,20 @@ namespace SchoolManagementSystem.Controllers
                 return View(teacherBLL.GetPerson((int)Session["teacherID"]));
             }            
         }
+        public ActionResult Class()
+        {
+            //Rewrite
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult Messages()
+        {
+            //Rewrite
+            return RedirectToAction("Index", "Home");
+        }
+        public new ActionResult Profile()
+        {
+            //Rewrite
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
