@@ -35,6 +35,7 @@ namespace Data.Models
         [DisplayName("Mobile")]
         [Phone]
         [Required(ErrorMessage = "Mobile is Required.")]
+        [DataType(DataType.PhoneNumber)]
         public string Mobile { get; set; }
 
         [DisplayName("Subject")]

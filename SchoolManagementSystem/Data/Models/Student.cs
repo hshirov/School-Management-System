@@ -34,6 +34,7 @@ namespace Data.Models
         [Phone]
         [Required(ErrorMessage = "Mobile is Required.")]
         [StringLength(10, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 9)]
+        [DataType(DataType.PhoneNumber)]
         public string Mobile { get; set; }
 
         [DisplayName("Class Number")]
