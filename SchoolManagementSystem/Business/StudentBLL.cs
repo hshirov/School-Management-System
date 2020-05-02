@@ -1,5 +1,6 @@
 ﻿using Data;
 using Data.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Business
@@ -30,6 +31,21 @@ namespace Business
             }
         }
 
+        public List<Student> GetStudentsFromClass(int id)
+        {
+            Student student = GetStudent(id);
+            string classLetter = student.ClassLetter;
+            int classNumber = student.ClassNumber;
+            List<Student> studentsFromClass = new List<Student>();
+
+            using (dbContext = new SchoolDbContext())
+            {
+                studentsFromClass = dbContext.Students.Where(x => x.ClassNumber == classNumber && x.ClassNumber == classNumber).ToList();
+            }
+
+            return studentsFromClass;
+        }
+
         /// <summary>
         /// Turns a instance of Student to a Person, which holds all the metching parameters from students and teachers
         /// </summary>
@@ -42,7 +58,8 @@ namespace Business
                 FirstName = student.FirstName,
                 LastName = student.LastName,
                 Email = student.Email,
-                Mobile = student.Mobile
+                Mobile = student.Mobile,
+                Role = "Student"
             };
 
             return person;

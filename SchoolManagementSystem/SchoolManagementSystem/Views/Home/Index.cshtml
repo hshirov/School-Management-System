@@ -5,12 +5,5 @@
 
     <div class="jumbotron">
         <h1>Welcome, @Model.FirstName</h1>
-        @if (Session["studentID"] != null)
-        {
-            <p>You are logged in as a Student.</p>
-        }
-        @if (Session["teacherID"] != null)
-        {
-            <p>You are logged in as a Teacher.</p>
-        }
+        <p>You are logged in as a @Model.Role.</p>
     </div>
