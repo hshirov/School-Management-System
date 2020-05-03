@@ -1,5 +1,4 @@
 ﻿using Business;
-using Data.Models;
 using System.Web.Mvc;
 
 namespace SchoolManagementSystem.Controllers
