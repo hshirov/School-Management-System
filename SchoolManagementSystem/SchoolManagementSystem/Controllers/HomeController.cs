@@ -1,4 +1,5 @@
 ﻿using Business;
+using Data.Models;
 using System.Web.Mvc;
 
 namespace SchoolManagementSystem.Controllers
@@ -30,6 +31,18 @@ namespace SchoolManagementSystem.Controllers
             }
             return View(_studentBll.GetStudentsFromClass((int)Session["studentID"]));
         }
+
+        public ActionResult StudentDetails(int id = 1)
+        {
+            //Can't access if you're not logged in
+            if (Session["studentID"] == null && Session["teacherID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View(_studentBll.GetStudent(id));
+        }
+
         public ActionResult Messages()
         {
             //Rewrite
