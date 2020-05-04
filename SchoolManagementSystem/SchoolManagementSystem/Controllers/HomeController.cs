@@ -10,45 +10,18 @@ namespace SchoolManagementSystem.Controllers
 
         public ActionResult Index()
         {
-            if (Session["studentID"] == null && Session["teacherID"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            } 
-
-            if (Session["studentID"] != null)
+            if(Session["studentID"] != null)
             {
                 return View(_studentBll.GetPerson((int)Session["studentID"]));
-            } 
-            return View(_teacherBll.GetPerson((int)Session["teacherID"]));
-        }
-        public ActionResult ClassStudent()
-        {
-            //Can't access if you're not logged in
-            if (Session["studentID"] == null && Session["teacherID"] == null)
-            {
-                return RedirectToAction("Index", "Login");
             }
-            if (Session["studentID"] != null)
+            else if(Session["teacherID"] != null)
             {
-                return View(_studentBll.GetStudentsFromClass((int)Session["studentID"]));
+                return View(_teacherBll.GetPerson((int)Session["teacherID"]));
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Login");
         }
-        public ActionResult ClassTeacher()
-        {
-            //Can't access if you're not logged in
-            if (Session["studentID"] == null && Session["teacherID"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-            if (Session["teacherID"] != null)
-            {
-                return View(_studentBll.GetStudents());
-            }
 
-            return RedirectToAction("Index", "Home");
-        }
 
         public ActionResult StudentDetails(int id = 1)
         {

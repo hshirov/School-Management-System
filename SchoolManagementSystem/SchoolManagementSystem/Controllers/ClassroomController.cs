@@ -13,16 +13,36 @@ namespace SchoolManagementSystem.Controllers
         // GET: Classroom
         public ActionResult Index()
         {
-            return View();
+            if(Session["studentID"] != null)
+            {
+                return RedirectToAction("Classmates");
+            }
+            else if(Session["teacherID"] != null)
+            {
+                return RedirectToAction("Classes");
+            }
+
+            return RedirectToAction("Index", "Login");
         }
+
 
         public ActionResult Classmates()
         {
+            if(Session["studentID"] == null && Session["teacherID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             return View(_studentBll.GetStudentsFromClass((int)Session["studentID"]));
         }
 
         public ActionResult Classes()
         {
+            if (Session["studentID"] == null && Session["teacherID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             return View(_studentBll.GetStudents());
         }
     }
