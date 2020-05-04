@@ -1,4 +1,4 @@
-﻿using Data;
+﻿ using Data;
 using Data.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +54,17 @@ namespace Business
             int classNumber = student.ClassNumber;
             List<Student> studentsFromClass;
 
+            using (SchoolDbContext dbContext = new SchoolDbContext())
+            {
+                studentsFromClass = dbContext.Students.Where(x => x.ClassLetter == classLetter && x.ClassNumber == classNumber).ToList();
+            }
+
+            return studentsFromClass;
+        }
+
+        public List<Student> GetStudentsFromClass(int classNumber, string classLetter)
+        {
+            List<Student> studentsFromClass;
             using (SchoolDbContext dbContext = new SchoolDbContext())
             {
                 studentsFromClass = dbContext.Students.Where(x => x.ClassLetter == classLetter && x.ClassNumber == classNumber).ToList();

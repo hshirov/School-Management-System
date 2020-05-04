@@ -4,32 +4,68 @@
     ViewBag.Title = "Class";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using (Html.BeginForm("Classes", "Classroom", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
 
-<h2>Students</h2>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th></th>
-    </tr>
+    <h2> Class: </h2>
+    <div class="form-group">
+        <div class="col-md-10" style="float: left">
+            @Html.Editor("Class Number", new {htmlAttributes = new {@class = "form-control", min = "7", max = "12", @display = "inline-block"}})
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-10">
+            @Html.DropDownList("Class Letter", new List<SelectListItem>
+            {
 
-    @foreach (var item in Model)
-    {
+                new SelectListItem {Text = "A", Value = "A"},
+                new SelectListItem {Text = "B", Value = "B"},
+                new SelectListItem {Text = "C", Value = "C"},
+                new SelectListItem {Text = "D", Value = "D"},
+                new SelectListItem {Text = "E", Value = "E"},
+                new SelectListItem {Text = "F", Value = "F"},
+                new SelectListItem {Text = "G", Value = "G"},
+                new SelectListItem {Text = "H", Value = "H"},
+                new SelectListItem {Text = "I", Value = "I"},
+                new SelectListItem {Text = "J", Value = "J"},
+                new SelectListItem {Text = "K", Value = "K"},
+                new SelectListItem {Text = "L", Value = "L"}
+            }, new {@class = "form-control", @display = "inline-block"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Search" class="btn btn-default" />
+        </div>
+    </div>
+
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "StudentDetails", "Home", new { id = item.Id }, null)
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "StudentDetails", "Classroom", new {id = item.Id}, null)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
