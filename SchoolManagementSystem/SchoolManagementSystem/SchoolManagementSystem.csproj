@@ -177,8 +177,9 @@
     <Content Include="Views\Shared\_TeacherNavBar.cshtml" />
     <Content Include="Views\Register\Student.cshtml" />
     <Content Include="Views\Register\Teacher.cshtml" />
-    <Content Include="Views\Home\Class.cshtml" />
+    <Content Include="Views\Home\ClassStudent.cshtml" />
     <Content Include="Views\Home\StudentDetails.cshtml" />
+    <Content Include="Views\Home\ClassTeacher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
