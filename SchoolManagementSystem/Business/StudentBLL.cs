@@ -31,6 +31,9 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Finds a student with the given ID and returns every student from his class.
+        /// </summary>
         public List<Student> GetStudentsFromClass(int id)
         {
             Student student = GetStudent(id);
