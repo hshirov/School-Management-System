@@ -32,6 +32,19 @@ namespace Business
         }
 
         /// <summary>
+        /// Returns every student from the database
+        /// </summary>
+        public List<Student> GetStudents()
+        {
+            using (_dbContext = new SchoolDbContext())
+            {
+                List<Student> students = _dbContext.Students.ToList();
+                return students;
+            }
+
+        }
+
+        /// <summary>
         /// Finds a student with the given ID and returns every student from his class.
         /// </summary>
         public List<Student> GetStudentsFromClass(int id)

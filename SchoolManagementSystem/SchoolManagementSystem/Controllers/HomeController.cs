@@ -44,7 +44,7 @@ namespace SchoolManagementSystem.Controllers
             }
             if (Session["teacherID"] != null)
             {
-                return View(_studentBll.GetStudentsFromClass((int)Session["teacherID"]));
+                return View(_studentBll.GetStudents());
             }
 
             return RedirectToAction("Index", "Home");
