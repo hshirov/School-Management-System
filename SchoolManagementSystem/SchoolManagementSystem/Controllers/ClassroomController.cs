@@ -1,8 +1,4 @@
 ﻿using Business;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SchoolManagementSystem.Controllers
@@ -36,14 +32,24 @@ namespace SchoolManagementSystem.Controllers
             return View(_studentBll.GetStudentsFromClass((int)Session["studentID"]));
         }
 
-        public ActionResult Classes()
+        public ActionResult Classes(int classNumber = 7, string classLetter="A")
         {
             if (Session["studentID"] == null && Session["teacherID"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
 
-            return View(_studentBll.GetStudents());
+            return View(_studentBll.GetStudentsFromClass(classNumber, classLetter));
+        }
+        public ActionResult StudentDetails(int id = 1)
+        {
+            //Can't access if you're not logged in
+            if (Session["studentID"] == null && Session["teacherID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View(_studentBll.GetStudent(id));
         }
     }
 }

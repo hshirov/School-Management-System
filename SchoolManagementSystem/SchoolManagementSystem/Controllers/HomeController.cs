@@ -22,23 +22,12 @@ namespace SchoolManagementSystem.Controllers
             return RedirectToAction("Index", "Login");
         }
 
-
-        public ActionResult StudentDetails(int id = 1)
-        {
-            //Can't access if you're not logged in
-            if (Session["studentID"] == null && Session["teacherID"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
-            return View(_studentBll.GetStudent(id));
-        }
-
         public ActionResult Messages()
         {
             //Rewrite
             return RedirectToAction("Index", "Home");
         }
+
         public new ActionResult Profile()
         {
             //Rewrite
