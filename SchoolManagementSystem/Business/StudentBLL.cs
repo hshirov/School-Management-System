@@ -56,7 +56,7 @@ namespace Business
 
             using (SchoolDbContext dbContext = new SchoolDbContext())
             {
-                studentsFromClass = dbContext.Students.Where(x => x.ClassLetter == classLetter && x.ClassNumber == classNumber).ToList();
+                studentsFromClass = dbContext.Students.Where(x => x.ClassLetter == classLetter && x.ClassNumber == classNumber).OrderByDescending(x => x.FirstName).ToList();
             }
 
             return studentsFromClass;
@@ -67,7 +67,7 @@ namespace Business
             List<Student> studentsFromClass;
             using (SchoolDbContext dbContext = new SchoolDbContext())
             {
-                studentsFromClass = dbContext.Students.Where(x => x.ClassLetter == classLetter && x.ClassNumber == classNumber).ToList();
+                studentsFromClass = dbContext.Students.Where(x => x.ClassLetter == classLetter && x.ClassNumber == classNumber).OrderByDescending(x => x.FirstName).ToList();
             }
 
             return studentsFromClass;

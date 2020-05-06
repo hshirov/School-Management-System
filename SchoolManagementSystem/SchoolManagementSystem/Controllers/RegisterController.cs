@@ -65,6 +65,7 @@ namespace SchoolManagementSystem.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpPost]
         public ActionResult CreateTeacher(Teacher teacher)
         {
             if (!ModelState.IsValid)
