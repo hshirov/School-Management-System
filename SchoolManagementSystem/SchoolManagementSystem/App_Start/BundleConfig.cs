@@ -22,7 +22,7 @@ namespace SchoolManagementSystem
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-slate.css",
+                      "~/Content/bootstrap-cosmo.css",
                       "~/Content/site.css"));
         }
     }
