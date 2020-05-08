@@ -25,7 +25,7 @@ namespace SchoolManagementSystem.Controllers
         }
         public ActionResult Teacher()
         {
-            return View(_studentBll.GetStudent((int)Session["teacherId"]));
+            return View(_teacherBll.GetTeacher((int)Session["teacherId"]));
         }
 
         public ActionResult UpdateStudent(Student student)
@@ -37,6 +37,8 @@ namespace SchoolManagementSystem.Controllers
 
         public ActionResult UpdateTeacher(Teacher teacher)
         {
+            teacher.Id = (int)Session["teacherId"];
+            _teacherBll.UpdateTeacher(teacher);
             return RedirectToAction("Teacher");
         }
     }

@@ -7,10 +7,14 @@ namespace SchoolManagementSystem.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly StudentBll _studentBll = new StudentBll();
-        private readonly TeacherBll _teacherBll = new TeacherBll();
+        private readonly StudentBll _studentBll;
+        private readonly TeacherBll _teacherBll;
 
-        // GET: Login
+        public LoginController()
+        {
+            _studentBll = new StudentBll();
+            _teacherBll = new TeacherBll();
+        }
         public ActionResult Index()
         {
             //If you're logged in, you can't access this view

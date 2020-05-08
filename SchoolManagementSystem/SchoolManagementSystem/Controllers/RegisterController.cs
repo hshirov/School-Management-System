@@ -7,10 +7,15 @@ namespace SchoolManagementSystem.Controllers
 {
     public class RegisterController : Controller
     {
-        private readonly StudentBll _studentBll = new StudentBll();
-        private readonly TeacherBll _teacherBll = new TeacherBll();
+        private readonly StudentBll _studentBll;
+        private readonly TeacherBll _teacherBll;
 
-        // GET: Register
+        public RegisterController()
+        {
+            _studentBll = new StudentBll();
+            _teacherBll = new TeacherBll();
+        }
+
         public ActionResult Index()
         {
             return RedirectToAction("Student");

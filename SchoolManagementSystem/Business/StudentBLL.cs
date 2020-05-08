@@ -119,6 +119,7 @@ namespace Business
             using (_dbContext = new SchoolDbContext())
             {               
                 _dbContext.Students.AddOrUpdate(x => x.Id, student);
+                _dbContext.SaveChanges();
             }
         }
     }

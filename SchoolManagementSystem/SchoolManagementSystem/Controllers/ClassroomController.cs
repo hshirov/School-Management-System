@@ -5,8 +5,12 @@ namespace SchoolManagementSystem.Controllers
 {
     public class ClassroomController : Controller
     {
-        private readonly StudentBll _studentBll = new StudentBll();
-        // GET: Classroom
+        private readonly StudentBll _studentBll;
+        
+        public ClassroomController()
+        {
+            _studentBll = new StudentBll();
+        }
         public ActionResult Index()
         {
             if(Session["studentID"] != null)

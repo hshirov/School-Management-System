@@ -1,5 +1,6 @@
 ﻿using Data;
 using Data.Models;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace Business
@@ -64,6 +65,16 @@ namespace Business
             using (_dbContext = new SchoolDbContext())
             {
                 _dbContext.Teachers.Add(teacher);
+                _dbContext.SaveChanges();
+            }
+        }
+        public void UpdateTeacher(Teacher teacher)
+        {
+            teacher.PasswordHash = GetTeacher(teacher.Id).PasswordHash;
+            teacher.Subject = GetTeacher(teacher.Id).Subject;
+            using (_dbContext = new SchoolDbContext())
+            {
+                _dbContext.Teachers.AddOrUpdate(x => x.Id, teacher);
                 _dbContext.SaveChanges();
             }
         }

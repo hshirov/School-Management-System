@@ -5,9 +5,14 @@ namespace SchoolManagementSystem.Controllers
 {    
     public class HomeController : Controller
     {
-        private readonly StudentBll _studentBll = new StudentBll();
-        private readonly TeacherBll _teacherBll = new TeacherBll();
+        private readonly StudentBll _studentBll;
+        private readonly TeacherBll _teacherBll;
 
+        public HomeController()
+        {
+            _studentBll = new StudentBll();
+            _teacherBll = new TeacherBll();
+        }
         public ActionResult Index()
         {
             if(Session["studentID"] != null)
