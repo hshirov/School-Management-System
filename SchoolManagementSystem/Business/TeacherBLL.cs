@@ -70,6 +70,7 @@ namespace Business
         }
         public void UpdateTeacher(Teacher teacher)
         {
+            teacher.Email = GetTeacher(teacher.Id).Email;
             teacher.PasswordHash = GetTeacher(teacher.Id).PasswordHash;
             teacher.Subject = GetTeacher(teacher.Id).Subject;
             using (_dbContext = new SchoolDbContext())

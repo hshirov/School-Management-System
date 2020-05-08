@@ -113,6 +113,7 @@ namespace Business
 
         public void UpdateStudent(Student student)
         {
+            student.Email = GetStudent(student.Id).Email;
             student.PasswordHash = GetStudent(student.Id).PasswordHash;
             student.ClassNumber = GetStudent(student.Id).ClassNumber;
             student.ClassLetter = GetStudent(student.Id).ClassLetter;

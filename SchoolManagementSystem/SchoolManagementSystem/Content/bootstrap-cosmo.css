@@ -6824,3 +6824,8 @@ a.list-group-item-danger.active:focus {
 .popover {
   color: #333333;
 }
+input#mobile::-webkit-inner-spin-button,
+input#mobile::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

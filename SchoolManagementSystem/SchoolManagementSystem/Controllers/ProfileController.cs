@@ -21,10 +21,26 @@ namespace SchoolManagementSystem.Controllers
 
         public ActionResult Student()
         {
+            if (Session["studentID"] == null && Session["teacherId"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else if(Session["teacherId"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View(_studentBll.GetStudent((int)Session["studentId"]));
         }
         public ActionResult Teacher()
         {
+            if (Session["studentID"] == null && Session["teacherId"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else if (Session["studentID"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View(_teacherBll.GetTeacher((int)Session["teacherId"]));
         }
 
