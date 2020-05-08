@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using Business;
+using Data;
 using Data.Models;
 using System;
 using System.Linq;
@@ -9,42 +10,34 @@ namespace SchoolManagementSystem.Controllers
 {
     public class ProfileController : Controller
     {
-        // GET: Profile
-        private readonly SchoolDbContext _dbContext;
-        public ActionResult Edit()
+        private readonly StudentBll _studentBll;
+        private readonly TeacherBll _teacherBll;
+
+        public ProfileController()
         {
-            // rewrite getting id
-            int userId = Convert.ToInt32(_dbContext.Students.FindFirstValue(ClaimTypes.NameIdentifier));
+            _studentBll = new StudentBll();
+            _teacherBll = new TeacherBll();
+        }
 
-            // Fetch the userprofile
-            if (Session["studentID"] != null)
-            {
-                Student studentIdentity = _dbContext.Students.FirstOrDefault(u => u.Id.Equals(userId));
-                Student model = new Student
-                {
-                    FirstName = studentIdentity.FirstName,
-                    LastName = studentIdentity.LastName,
-                    Email = studentIdentity.Email,
-                    PasswordHash = studentIdentity.PasswordHash,
-                    Mobile = studentIdentity.Mobile
-                };
-                return View("Profile","ProfileStudent");
-            }
-            else if (Session["teacherID"] != null)
-            {
-                Teacher teacherIdentity = _dbContext.Teachers.FirstOrDefault(u => u.Id.Equals(userId));
-                Teacher model = new Teacher
-                {
-                    FirstName = teacherIdentity.FirstName,
-                    LastName = teacherIdentity.LastName,
-                    Email = teacherIdentity.Email,
-                    PasswordHash = teacherIdentity.PasswordHash,
-                    Mobile = teacherIdentity.Mobile
-                };
-                return View("Profile", "ProfileTeacher");
-            }
+        public ActionResult Student()
+        {
+            return View(_studentBll.GetStudent((int)Session["studentId"]));
+        }
+        public ActionResult Teacher()
+        {
+            return View(_studentBll.GetStudent((int)Session["teacherId"]));
+        }
 
-            return RedirectToAction("Index", "Login");
+        public ActionResult UpdateStudent(Student student)
+        {
+            student.Id = (int)Session["studentId"];
+            _studentBll.UpdateStudent(student);
+            return RedirectToAction("Student");
+        }
+
+        public ActionResult UpdateTeacher(Teacher teacher)
+        {
+            return RedirectToAction("Teacher");
         }
     }
 }

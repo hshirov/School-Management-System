@@ -1,6 +1,7 @@
 ﻿ using Data;
 using Data.Models;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace Business
@@ -107,6 +108,17 @@ namespace Business
             {
                 _dbContext.Students.Add(student);
                 _dbContext.SaveChanges();
+            }
+        }
+
+        public void UpdateStudent(Student student)
+        {
+            student.PasswordHash = GetStudent(student.Id).PasswordHash;
+            student.ClassNumber = GetStudent(student.Id).ClassNumber;
+            student.ClassLetter = GetStudent(student.Id).ClassLetter;
+            using (_dbContext = new SchoolDbContext())
+            {               
+                _dbContext.Students.AddOrUpdate(x => x.Id, student);
             }
         }
     }

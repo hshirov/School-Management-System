@@ -18,7 +18,6 @@
         <div class="col-lg-10" style="max-width:9.5%; display:inline-block;">
             @Html.DropDownListFor(model => model.FirstOrDefault().ClassLetter, new List<SelectListItem>
             {
-
                 new SelectListItem {Text = "A", Value = "A"},
                 new SelectListItem {Text = "B", Value = "B"},
                 new SelectListItem {Text = "C", Value = "C"},
@@ -47,7 +46,6 @@
             </th>
             <th></th>
         </tr>
-
         @foreach (var item in Model)
         {
             <tr>
