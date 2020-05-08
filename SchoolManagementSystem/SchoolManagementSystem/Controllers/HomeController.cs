@@ -27,11 +27,5 @@ namespace SchoolManagementSystem.Controllers
             //Rewrite
             return RedirectToAction("Index", "Home");
         }
-
-        public new ActionResult Profile()
-        {
-            //Rewrite
-            return RedirectToAction("Index", "Home");
-        }
     }
 }

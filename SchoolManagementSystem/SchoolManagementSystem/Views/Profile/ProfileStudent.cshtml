@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Profile Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Profile Student</h2>
+@model Data.Models.Student
+
+@using (Html.BeginForm("Edit", "ProfileStudent"))
+{
+    @Html.EditorFor(model => model.FirstName)
+    @Html.EditorFor(model => model.LastName)
+    @Html.EditorFor(model => model.Email)
+    @Html.EditorFor(model => model.PasswordHash)
+    @Html.EditorFor(model => model.Mobile)
+
+    <input type="submit" value="Save" />
+}
+
