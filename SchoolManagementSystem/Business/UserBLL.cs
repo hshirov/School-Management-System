@@ -9,7 +9,7 @@ namespace Business
         /// </summary>
         /// <param name="text">The raw password input.</param>
         /// <returns>64 character SHA256 Hash.</returns>
-        public static string GetStringSha256Hash(string text)
+        public string HashPassword(string text)
         {
             if (string.IsNullOrEmpty(text))
                 return string.Empty;

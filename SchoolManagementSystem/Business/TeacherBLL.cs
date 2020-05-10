@@ -8,6 +8,12 @@ namespace Business
     public class TeacherBll
     {
         private SchoolDbContext _dbContext;
+        private readonly UserBll _userBll;
+
+        public TeacherBll()
+        {
+            _userBll = new UserBll();
+        }
 
         /// <summary>
         /// Finds the first teacher in the table based on the given email and password in User.
@@ -15,7 +21,7 @@ namespace Business
         /// <param name="user">Stores email and password.</param>
         public Teacher GetTeacher(User user)
         {
-            string password = UserBll.GetStringSha256Hash(user.PasswordHash);
+            string password = _userBll.HashPassword(user.PasswordHash);
             using (_dbContext = new SchoolDbContext())
             {
                 Teacher teacher = _dbContext.Teachers.FirstOrDefault(x => x.Email == user.Email && x.PasswordHash == password);
@@ -61,13 +67,14 @@ namespace Business
 
         public void AddTeacher(Teacher teacher)
         {
-            teacher.PasswordHash = UserBll.GetStringSha256Hash(teacher.PasswordHash);
+            teacher.PasswordHash = _userBll.HashPassword(teacher.PasswordHash);
             using (_dbContext = new SchoolDbContext())
             {
                 _dbContext.Teachers.Add(teacher);
                 _dbContext.SaveChanges();
             }
         }
+
         public void UpdateTeacher(Teacher teacher)
         {
             teacher.Email = GetTeacher(teacher.Id).Email;

@@ -9,6 +9,12 @@ namespace Business
     public class StudentBll
     {
         private SchoolDbContext _dbContext;
+        private readonly UserBll _userBll;
+
+        public StudentBll()
+        {
+            _userBll = new UserBll();
+        }
 
         /// <summary>
         /// Finds the first student in the table based on the given email and password in User.
@@ -16,13 +22,14 @@ namespace Business
         /// <param name="user">Stores email and password.</param>
         public Student GetStudent(User user)
         {
-            string password = UserBll.GetStringSha256Hash(user.PasswordHash);
+            string password = _userBll.HashPassword(user.PasswordHash);
             using (_dbContext = new SchoolDbContext())
             {
                 Student student = _dbContext.Students.FirstOrDefault(x => x.Email == user.Email && x.PasswordHash == password);
                 return student;
             }
         }
+
         public Student GetStudent(int id)
         {
             using (_dbContext = new SchoolDbContext())
@@ -103,7 +110,7 @@ namespace Business
 
         public void AddStudent(Student student)
         {
-            student.PasswordHash = UserBll.GetStringSha256Hash(student.PasswordHash);
+            student.PasswordHash = _userBll.HashPassword(student.PasswordHash);
             using (_dbContext = new SchoolDbContext())
             {
                 _dbContext.Students.Add(student);

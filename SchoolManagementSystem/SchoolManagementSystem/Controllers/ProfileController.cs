@@ -31,6 +31,7 @@ namespace SchoolManagementSystem.Controllers
             }
             return View(_studentBll.GetStudent((int)Session["studentId"]));
         }
+
         public ActionResult Teacher()
         {
             if (Session["studentID"] == null && Session["teacherId"] == null)

@@ -11,6 +11,7 @@ namespace SchoolManagementSystem.Controllers
         {
             _studentBll = new StudentBll();
         }
+
         public ActionResult Index()
         {
             if(Session["studentID"] != null)
@@ -24,7 +25,6 @@ namespace SchoolManagementSystem.Controllers
 
             return RedirectToAction("Index", "Login");
         }
-
 
         public ActionResult Classmates()
         {
@@ -45,6 +45,7 @@ namespace SchoolManagementSystem.Controllers
 
             return View(_studentBll.GetStudentsFromClass(classNumber, classLetter));
         }
+
         public ActionResult StudentDetails(int id = 1)
         {
             //Can't access if you're not logged in
