@@ -78,9 +78,10 @@ namespace Business
 
         public void UpdateTeacher(Teacher teacher)
         {
+            //DON'T TOUCH!
+            //! THIS ADDS FIELDS THAT ARE EMPTY AND CANT BE CHANGED !
             teacher.Email = GetTeacher(teacher.Id).Email;
             teacher.PasswordHash = GetTeacher(teacher.Id).PasswordHash;
-            teacher.Address = GetTeacher(teacher.Id).Address;
             teacher.Subject = GetTeacher(teacher.Id).Subject;
             using (_dbContext = new SchoolDbContext())
             {

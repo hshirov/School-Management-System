@@ -121,9 +121,10 @@ namespace Business
 
         public void UpdateStudent(Student student)
         {
+            //DON'T TOUCH!
+            //! THIS ADDS FIELDS THAT ARE EMPTY AND CANT BE CHANGED !
             student.Email = GetStudent(student.Id).Email;
             student.PasswordHash = GetStudent(student.Id).PasswordHash;
-            student.Address = GetStudent(student.Id).Address;
             student.ClassNumber = GetStudent(student.Id).ClassNumber;
             student.ClassLetter = GetStudent(student.Id).ClassLetter;
             using (_dbContext = new SchoolDbContext())
