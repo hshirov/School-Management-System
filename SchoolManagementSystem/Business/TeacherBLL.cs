@@ -51,6 +51,7 @@ namespace Business
                 LastName = teacher.LastName,
                 Email = teacher.Email,
                 Mobile = teacher.Mobile,
+                Address = teacher.Address,
                 Role = "Teacher"
             };
 
@@ -79,6 +80,7 @@ namespace Business
         {
             teacher.Email = GetTeacher(teacher.Id).Email;
             teacher.PasswordHash = GetTeacher(teacher.Id).PasswordHash;
+            teacher.Address = GetTeacher(teacher.Id).Address;
             teacher.Subject = GetTeacher(teacher.Id).Subject;
             using (_dbContext = new SchoolDbContext())
             {

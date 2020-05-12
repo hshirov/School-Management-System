@@ -11,11 +11,11 @@
     <div class="form-group">
         <h2 style=""> Class: </h2>
 
-        <div class="col-md-10" style="max-width:10%">
+        <div class="col-md-10" style="max-width:11%">
             @Html.EditorFor(model => model.FirstOrDefault().ClassNumber, new { htmlAttributes = new { @class = "form-control", @min = "7", @max = "12", @display = "inline-block", @type = "number" } })
         </div>
 
-        <div class="col-lg-10" style="max-width:9.5%; display:inline-block;">
+        <div class="col-lg-10" style="max-width:10%; display:inline-block;">
             @Html.DropDownListFor(model => model.FirstOrDefault().ClassLetter, new List<SelectListItem>
             {
                 new SelectListItem {Text = "A", Value = "A"},

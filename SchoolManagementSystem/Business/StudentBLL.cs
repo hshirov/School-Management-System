@@ -94,6 +94,7 @@ namespace Business
                 LastName = student.LastName,
                 Email = student.Email,
                 Mobile = student.Mobile,
+                Address = student.Address,
                 Role = "Student"
             };
 
@@ -122,6 +123,7 @@ namespace Business
         {
             student.Email = GetStudent(student.Id).Email;
             student.PasswordHash = GetStudent(student.Id).PasswordHash;
+            student.Address = GetStudent(student.Id).Address;
             student.ClassNumber = GetStudent(student.Id).ClassNumber;
             student.ClassLetter = GetStudent(student.Id).ClassLetter;
             using (_dbContext = new SchoolDbContext())

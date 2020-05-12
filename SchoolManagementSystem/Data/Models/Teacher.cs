@@ -38,6 +38,10 @@ namespace Data.Models
         [DataType(DataType.PhoneNumber)]
         public string Mobile { get; set; }
 
+        [DisplayName("Address")]
+        [Required(ErrorMessage = "Address is Required!")]
+        public string Address { get; set; }
+
         [DisplayName("Subject")]
         [Required(ErrorMessage = "This field is required!")]
         public string Subject { get; set; }
