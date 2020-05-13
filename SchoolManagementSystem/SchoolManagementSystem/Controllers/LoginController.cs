@@ -33,22 +33,24 @@ namespace SchoolManagementSystem.Controllers
                 var studentDetails = _studentBll.GetStudent(user);
                 var teacherDetails = _teacherBll.GetTeacher(user);
 
-                if (studentDetails == null && teacherDetails == null)
-                {
-                    //user not found
-                    user.LoginErrorMessage = "Wrong email or password.";
-                    return View("Index", user);
-                }
-
                 if (studentDetails != null)
                 {
                     //student found
                     Session["studentID"] = studentDetails.Id;
                     return RedirectToAction("Index", "Home");
                 }
-                //teacher found
-                Session["teacherID"] = teacherDetails.Id;
-                return RedirectToAction("Index", "Home");
+                else if(teacherDetails != null)
+                {
+                    //teacher found
+                    Session["teacherID"] = teacherDetails.Id;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    //user not found
+                    ViewData["Message"] = "Error";
+                    return View("Index");
+                }                        
             }
         }
 

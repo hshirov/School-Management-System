@@ -41,18 +41,22 @@ namespace SchoolManagementSystem.Controllers
             return View(_teacherBll.GetTeacher((int)Session["teacherId"]));
         }
 
+        [HttpPost]
         public ActionResult UpdateStudent(Student student)
         {
             student.Id = (int)Session["studentId"];
             _studentBll.UpdateStudent(student);
-            return RedirectToAction("Student");
+            ViewData["Message"] = "Success";
+            return View("Student");
         }
 
+        [HttpPost]
         public ActionResult UpdateTeacher(Teacher teacher)
         {
             teacher.Id = (int)Session["teacherId"];
             _teacherBll.UpdateTeacher(teacher);
-            return RedirectToAction("Teacher");
+            ViewData["Message"] = "Success";
+            return View("Teacher");
         }
     }
 }

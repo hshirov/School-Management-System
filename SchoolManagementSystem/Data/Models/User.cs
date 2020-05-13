@@ -13,6 +13,5 @@ namespace Data.Models
         [Required(ErrorMessage = "Password is Required!")]
         [DataType(DataType.Password)]
         public string PasswordHash { get; set; }
-        public string LoginErrorMessage { get; set; }
     }
 }
