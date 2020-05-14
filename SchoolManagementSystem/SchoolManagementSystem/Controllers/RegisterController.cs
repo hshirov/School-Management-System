@@ -61,24 +61,22 @@ namespace SchoolManagementSystem.Controllers
         [HttpPost]
         public ActionResult CreateStudent(Student student)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                _studentBll.AddStudent(student);
+                Session["studentID"] = student.Id;               
             }
-            _studentBll.AddStudent(student);
-            Session["studentID"] = student.Id;
             return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
         public ActionResult CreateTeacher(Teacher teacher)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                _teacherBll.AddTeacher(teacher);
+                Session["teacherID"] = teacher.Id;              
             }
-            _teacherBll.AddTeacher(teacher);
-            Session["teacherID"] = teacher.Id;
             return RedirectToAction("Index", "Home");
         }
     }

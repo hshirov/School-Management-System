@@ -6,7 +6,7 @@
 
 <h2>Your Profile</h2>
 
-@using (Html.BeginForm("UpdateStudent", "Profile"))
+@using (Html.BeginForm("UpdateStudent", "Profile", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">

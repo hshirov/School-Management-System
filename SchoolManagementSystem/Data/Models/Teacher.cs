@@ -11,11 +11,13 @@ namespace Data.Models
         [DisplayName("First Name")]
         [Required(ErrorMessage = "First Name is Required!")]
         [StringLength(15, ErrorMessage = "{0} length must be between {2} and {1}!", MinimumLength = 3)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use letters only please.")]
         public string FirstName { get; set; }
 
         [DisplayName("Last Name")]
         [Required(ErrorMessage = "Last Name is Required!")]
         [StringLength(15, ErrorMessage = "{0} length must be between {2} and {1}!", MinimumLength = 3)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use letters only please.")]
         public string LastName { get; set; }
 
         [DisplayName("Email")]
