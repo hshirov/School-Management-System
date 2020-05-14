@@ -41,6 +41,16 @@ namespace SchoolManagementSystem.Controllers
             return View(_teacherBll.GetTeacher((int)Session["teacherId"]));
         }
 
+        public ActionResult DeactivateStudent()
+        {
+            return View();
+        }
+
+        public ActionResult DeactivateTeacher()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult UpdateStudent(Student student)
         {
@@ -57,6 +67,39 @@ namespace SchoolManagementSystem.Controllers
             _teacherBll.UpdateTeacher(teacher);
             ViewData["Message"] = "Success";
             return View("Teacher");
+        }
+        
+
+        [HttpPost]
+        public ActionResult DeleteStudent(Student student)
+        {
+            student.Id = (int)Session["studentId"];
+            if (!_studentBll.IsPasswordValid(student))
+            {
+                ViewData["Message"] = "Error";
+                return View("DeactivateStudent");
+            }
+            else
+            {
+                _studentBll.DeleteStudent(student.Id);
+                return RedirectToAction("LogOut", "Login");
+            }
+        }       
+
+        [HttpPost]
+        public ActionResult DeleteTeacher(Teacher teacher)
+        {
+            teacher.Id = (int)Session["teacherId"];
+            if (!_teacherBll.IsPasswordValid(teacher))
+            {
+                ViewData["Message"] = "Error";
+                return View("DeactivateTeacher");
+            }
+            else
+            {
+                _teacherBll.DeleteTeacher(teacher.Id);
+                return RedirectToAction("LogOut", "Login");
+            }
         }
     }
 }

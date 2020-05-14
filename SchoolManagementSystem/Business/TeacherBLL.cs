@@ -1,5 +1,6 @@
 ﻿using Data;
 using Data.Models;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
@@ -87,6 +88,32 @@ namespace Business
             {
                 _dbContext.Teachers.AddOrUpdate(x => x.Id, teacher);
                 _dbContext.SaveChanges();
+            }
+        }
+
+        public void DeleteTeacher(int id)
+        {
+            Teacher teacher = GetTeacher(id);
+            using (_dbContext = new SchoolDbContext())
+            {
+                _dbContext.Entry(teacher).State = EntityState.Deleted;
+                _dbContext.Teachers.Remove(teacher);
+                _dbContext.SaveChanges();
+            }
+        }
+
+        public bool IsPasswordValid(Teacher teacher)
+        {
+            string userPassword = GetTeacher(teacher.Id).PasswordHash;
+            string inputPassword = _userBll.HashPassword(teacher.PasswordHash);
+
+            if (userPassword == inputPassword)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

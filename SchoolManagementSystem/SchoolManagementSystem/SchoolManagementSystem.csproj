@@ -305,6 +305,8 @@
     <Content Include="Views\Classroom\StudentDetails.cshtml" />
     <Content Include="Views\Profile\Student.cshtml" />
     <Content Include="Views\Profile\Teacher.cshtml" />
+    <Content Include="Views\Profile\DeactivateStudent.cshtml" />
+    <Content Include="Views\Profile\DeactivateTeacher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

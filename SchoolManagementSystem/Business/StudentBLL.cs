@@ -1,6 +1,7 @@
 ﻿ using Data;
 using Data.Models;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
@@ -131,6 +132,32 @@ namespace Business
             {               
                 _dbContext.Students.AddOrUpdate(x => x.Id, student);
                 _dbContext.SaveChanges();
+            }
+        }
+
+        public void DeleteStudent(int id)
+        {
+            Student student = GetStudent(id);
+            using (_dbContext = new SchoolDbContext())
+            {
+                _dbContext.Entry(student).State = EntityState.Deleted;
+                _dbContext.Students.Remove(student);
+                _dbContext.SaveChanges();
+            }
+        }
+
+        public bool IsPasswordValid(Student student)
+        {
+            string userPassword = GetStudent(student.Id).PasswordHash;
+            string inputPassword = _userBll.HashPassword(student.PasswordHash);
+
+            if(userPassword == inputPassword)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
