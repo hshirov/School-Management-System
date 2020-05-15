@@ -40,17 +40,17 @@ namespace SchoolManagementSystem.Controllers
             }
             return View();
         }
-        
+
         public JsonResult VerifyEmail(string email)
         {
             using (new SchoolDbContext())
             {
-                if(_studentBll.IsEmailInUse(email))
+                if (_studentBll.IsEmailInUse(email))
                 {
                     return Json(false, JsonRequestBehavior.AllowGet);
                 }
 
-                if(_teacherBll.IsEmailInUse(email))
+                if (_teacherBll.IsEmailInUse(email))
                 {
                     return Json(false, JsonRequestBehavior.AllowGet);
                 }
@@ -64,7 +64,7 @@ namespace SchoolManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 _studentBll.AddStudent(student);
-                Session["studentID"] = student.Id;               
+                Session["studentID"] = student.Id;
             }
             return RedirectToAction("Index", "Home");
         }
@@ -75,7 +75,7 @@ namespace SchoolManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 _teacherBll.AddTeacher(teacher);
-                Session["teacherID"] = teacher.Id;              
+                Session["teacherID"] = teacher.Id;
             }
             return RedirectToAction("Index", "Home");
         }

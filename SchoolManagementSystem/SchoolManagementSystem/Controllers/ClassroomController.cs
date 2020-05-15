@@ -6,7 +6,7 @@ namespace SchoolManagementSystem.Controllers
     public class ClassroomController : Controller
     {
         private readonly StudentBll _studentBll;
-        
+
         public ClassroomController()
         {
             _studentBll = new StudentBll();
@@ -14,11 +14,11 @@ namespace SchoolManagementSystem.Controllers
 
         public ActionResult Index()
         {
-            if(Session["studentID"] != null)
+            if (Session["studentID"] != null)
             {
                 return RedirectToAction("Classmates");
             }
-            else if(Session["teacherID"] != null)
+            else if (Session["teacherID"] != null)
             {
                 return RedirectToAction("Classes");
             }
@@ -28,15 +28,15 @@ namespace SchoolManagementSystem.Controllers
 
         public ActionResult Classmates()
         {
-            if(Session["studentID"] == null && Session["teacherID"] == null)
+            if (Session["studentID"] == null && Session["teacherID"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
 
             return View(_studentBll.GetStudentsFromClass((int)Session["studentID"]));
         }
-        
-        public ActionResult Classes(int classNumber = 7, string classLetter="A")
+
+        public ActionResult Classes(int classNumber = 7, string classLetter = "A")
         {
             if (Session["studentID"] == null && Session["teacherID"] == null)
             {

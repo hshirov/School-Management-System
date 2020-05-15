@@ -21,7 +21,7 @@ namespace SchoolManagementSystem.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-            else if(Session["teacherId"] != null)
+            else if (Session["teacherId"] != null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -68,7 +68,6 @@ namespace SchoolManagementSystem.Controllers
             ViewData["Message"] = "Success";
             return View("Teacher");
         }
-        
 
         [HttpPost]
         public ActionResult DeleteStudent(Student student)
@@ -84,7 +83,7 @@ namespace SchoolManagementSystem.Controllers
                 _studentBll.DeleteStudent(student.Id);
                 return RedirectToAction("LogOut", "Login");
             }
-        }       
+        }
 
         [HttpPost]
         public ActionResult DeleteTeacher(Teacher teacher)
