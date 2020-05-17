@@ -311,6 +311,7 @@
     <Content Include="Views\AdminPanel\Teachers.cshtml" />
     <Content Include="Views\Shared\_AdminNavBar.cshtml" />
     <Content Include="Views\AdminPanel\Students.cshtml" />
+    <Content Include="Views\AdminPanel\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

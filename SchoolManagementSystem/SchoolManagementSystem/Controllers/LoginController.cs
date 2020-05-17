@@ -1,5 +1,4 @@
 ﻿using Business;
-using Data;
 using Data.Models;
 using System.Web.Mvc;
 
@@ -22,6 +21,10 @@ namespace SchoolManagementSystem.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            else if(Session["adminID"] != null)
+            {
+                return RedirectToAction("Index", "AdminPanel");
+            }
             return View();
         }
 
@@ -30,8 +33,8 @@ namespace SchoolManagementSystem.Controllers
         {
             if(user.Email == "admin@sms.com" && user.PasswordHash == "admin")
             {
-                Session["adminId"] = 1;
-                return RedirectToAction("Teachers", "AdminPanel");
+                Session["adminID"] = 1;//Id
+                return RedirectToAction("Index", "AdminPanel");
             }
 
             var studentDetails = _studentBll.GetStudent(user);

@@ -1,8 +1,4 @@
 ﻿using Business;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SchoolManagementSystem.Controllers
@@ -21,7 +17,7 @@ namespace SchoolManagementSystem.Controllers
         // GET: AdminPanel
         public ActionResult Index()
         {
-            return RedirectToAction("Teachers");
+            return View("Home");
         }
 
         public ActionResult Teachers()
