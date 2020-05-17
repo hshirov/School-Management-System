@@ -7,7 +7,6 @@
 
 <h2>Register as a Student</h2>
 
-
 @using (Html.BeginForm("CreateStudent", "Register", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -76,7 +75,6 @@
         <div class="col-lg-10">
             @Html.DropDownListFor(model => model.ClassLetter, new List<SelectListItem> {
                 new SelectListItem { Text = "A", Value = "A" },
-                new SelectListItem { Text = "A", Value = "A" },
                 new SelectListItem { Text = "B", Value = "B" },
                 new SelectListItem { Text = "C", Value = "C" },
                 new SelectListItem { Text = "D", Value = "D" },
@@ -108,7 +106,7 @@
 </div>
 
 }
-        
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     }

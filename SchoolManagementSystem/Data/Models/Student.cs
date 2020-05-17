@@ -41,7 +41,7 @@ namespace Data.Models
         public string Mobile { get; set; }
 
         [DisplayName("Address")]
-        [Required(ErrorMessage = "Address is Required!")]       
+        [Required(ErrorMessage = "Address is Required!")]
         [StringLength(30, ErrorMessage = "{0} length must be between {2} and {1}!", MinimumLength = 6)]
         public string Address { get; set; }
 

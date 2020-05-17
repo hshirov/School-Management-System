@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 
 namespace SchoolManagementSystem.Controllers
-{    
+{
     public class HomeController : Controller
     {
         private readonly StudentBll _studentBll;
@@ -13,13 +13,14 @@ namespace SchoolManagementSystem.Controllers
             _studentBll = new StudentBll();
             _teacherBll = new TeacherBll();
         }
+
         public ActionResult Index()
         {
-            if(Session["studentID"] != null)
+            if (Session["studentID"] != null)
             {
                 return View(_studentBll.GetPerson((int)Session["studentID"]));
             }
-            else if(Session["teacherID"] != null)
+            else if (Session["teacherID"] != null)
             {
                 return View(_teacherBll.GetPerson((int)Session["teacherID"]));
             }

@@ -1,4 +1,4 @@
-﻿ using Data;
+﻿using Data;
 using Data.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -59,7 +59,6 @@ namespace Business
                 List<Student> students = _dbContext.Students.ToList();
                 return students;
             }
-
         }
 
         /// <summary>
@@ -138,7 +137,7 @@ namespace Business
             student.ClassNumber = GetStudent(student.Id).ClassNumber;
             student.ClassLetter = GetStudent(student.Id).ClassLetter;
             using (_dbContext = new SchoolDbContext())
-            {               
+            {
                 _dbContext.Students.AddOrUpdate(x => x.Id, student);
                 _dbContext.SaveChanges();
             }
@@ -160,7 +159,7 @@ namespace Business
             string userPassword = GetStudent(student.Id).PasswordHash;
             string inputPassword = _userBll.HashPassword(student.PasswordHash);
 
-            if(userPassword == inputPassword)
+            if (userPassword == inputPassword)
             {
                 return true;
             }
