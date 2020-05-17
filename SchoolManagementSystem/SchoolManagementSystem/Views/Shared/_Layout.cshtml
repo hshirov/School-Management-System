@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @if (Session["studentID"] == null && Session["teacherID"] == null)
+    @if (Session["studentID"] == null && Session["teacherID"] == null && Session["adminId"] == null)
     {
         @Html.Partial("_DefaultNavBar")
     }
@@ -19,6 +19,10 @@
     else if (Session["teacherID"] != null)
     {
         @Html.Partial("_TeacherNavBar")
+    }
+    else if(Session["adminId"] != null)
+    {
+        @Html.Partial("_AdminNavBar")
     }
     <div class="container body-content">
         @RenderBody()

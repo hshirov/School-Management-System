@@ -1,5 +1,6 @@
 ﻿using Data;
 using Data.Models;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -36,6 +37,15 @@ namespace Business
             {
                 Teacher teacher = _dbContext.Teachers.FirstOrDefault(x => x.Id == id);
                 return teacher;
+            }
+        }
+
+        public List<Teacher> GetAll()
+        {
+            using (_dbContext = new SchoolDbContext())
+            {
+                List<Teacher> teachers = _dbContext.Teachers.ToList();
+                return teachers;
             }
         }
 

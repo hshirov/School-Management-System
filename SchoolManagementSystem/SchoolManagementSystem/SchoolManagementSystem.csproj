@@ -247,6 +247,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\ClassroomController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -307,6 +308,9 @@
     <Content Include="Views\Profile\Teacher.cshtml" />
     <Content Include="Views\Profile\DeactivateStudent.cshtml" />
     <Content Include="Views\Profile\DeactivateTeacher.cshtml" />
+    <Content Include="Views\AdminPanel\Teachers.cshtml" />
+    <Content Include="Views\Shared\_AdminNavBar.cshtml" />
+    <Content Include="Views\AdminPanel\Students.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

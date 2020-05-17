@@ -28,30 +28,34 @@ namespace SchoolManagementSystem.Controllers
         [HttpPost]
         public ActionResult Authorize(User user)
         {
-            using (new SchoolDbContext())
+            if(user.Email == "admin@sms.com" && user.PasswordHash == "admin")
             {
-                var studentDetails = _studentBll.GetStudent(user);
-                var teacherDetails = _teacherBll.GetTeacher(user);
-
-                if (studentDetails != null)
-                {
-                    //student found
-                    Session["studentID"] = studentDetails.Id;
-                    return RedirectToAction("Index", "Home");
-                }
-                else if(teacherDetails != null)
-                {
-                    //teacher found
-                    Session["teacherID"] = teacherDetails.Id;
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    //user not found
-                    ViewData["Message"] = "Error";
-                    return View("Index");
-                }                        
+                Session["adminId"] = 1;
+                return RedirectToAction("Teachers", "AdminPanel");
             }
+
+            var studentDetails = _studentBll.GetStudent(user);
+            var teacherDetails = _teacherBll.GetTeacher(user);
+            Session.Clear();
+
+            if (studentDetails != null)
+            {
+                //student found
+                Session["studentID"] = studentDetails.Id;
+                return RedirectToAction("Index", "Home");
+            }
+            else if(teacherDetails != null)
+            {
+                //teacher found
+                Session["teacherID"] = teacherDetails.Id;
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                //user not found
+                ViewData["Message"] = "Error";
+                return View("Index");
+            }                        
         }
 
         public ActionResult LogOut()

@@ -40,6 +40,15 @@ namespace Business
             }
         }
 
+        public List<Student> GetAll()
+        {
+            using (_dbContext = new SchoolDbContext())
+            {
+                List<Student> students = _dbContext.Students.ToList();
+                return students;
+            }
+        }
+
         /// <summary>
         /// Returns every student from the database
         /// </summary>
