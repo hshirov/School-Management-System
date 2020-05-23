@@ -14,6 +14,7 @@ namespace SchoolManagementSystem.Controllers
             _studentBll = new StudentBll();
             _teacherBll = new TeacherBll();
         }
+
         public ActionResult Index()
         {
             //If you're logged in, you can't access this view

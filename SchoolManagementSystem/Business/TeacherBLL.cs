@@ -31,6 +31,10 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Finds the first teacher in the table based on the given id in User.
+        /// </summary>
+        /// <param name="id">Stores id.</param>
         public Teacher GetTeacher(int id)
         {
             using (_dbContext = new SchoolDbContext())
@@ -40,6 +44,9 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Returns every teacher from the database
+        /// </summary>
         public List<Teacher> GetAll()
         {
             using (_dbContext = new SchoolDbContext())
@@ -69,6 +76,9 @@ namespace Business
             return person;
         }
 
+        /// <summary>
+        /// Checks if there is a teacher with the same email.
+        /// </summary>
         public bool IsEmailInUse(string email)
         {
             using (_dbContext = new SchoolDbContext())
@@ -77,6 +87,9 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Adds a teacher profile.
+        /// </summary>
         public void AddTeacher(Teacher teacher)
         {
             teacher.PasswordHash = _userBll.HashPassword(teacher.PasswordHash);
@@ -87,6 +100,9 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Updates the teacher profile information.
+        /// </summary>
         public void UpdateTeacher(Teacher teacher)
         {
             //DON'T TOUCH!
@@ -101,6 +117,9 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Deletes teacher profile.
+        /// </summary>
         public void DeleteTeacher(int id)
         {
             Teacher teacher = GetTeacher(id);
@@ -112,6 +131,9 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Checks if the user password is a valid password.
+        /// </summary>
         public bool IsPasswordValid(Teacher teacher)
         {
             string userPassword = GetTeacher(teacher.Id).PasswordHash;
@@ -121,10 +143,7 @@ namespace Business
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }
