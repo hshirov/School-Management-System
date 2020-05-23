@@ -175,7 +175,8 @@ namespace Business
             if (userPassword == inputPassword)
             {
                 return true;
-            } 
+            }
+
             return false;
         }
     }
