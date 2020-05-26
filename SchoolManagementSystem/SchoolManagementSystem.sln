@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{5B9689C3-A173-40BA-B978-C5F3985661B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagementSystem.NUnitTests", "SchoolManagementSystem.NUnitTests\SchoolManagementSystem.NUnitTests.csproj", "{344E7D55-A768-4303-B39F-07EBEDF69896}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolManagementSystem.NUnitTests", "SchoolManagementSystem.NUnitTests\SchoolManagementSystem.NUnitTests.csproj", "{344E7D55-A768-4303-B39F-07EBEDF69896}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{A364DF6E-7D46-477A-AD91-E492B06578F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{344E7D55-A768-4303-B39F-07EBEDF69896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{344E7D55-A768-4303-B39F-07EBEDF69896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{344E7D55-A768-4303-B39F-07EBEDF69896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A364DF6E-7D46-477A-AD91-E492B06578F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A364DF6E-7D46-477A-AD91-E492B06578F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A364DF6E-7D46-477A-AD91-E492B06578F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A364DF6E-7D46-477A-AD91-E492B06578F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
