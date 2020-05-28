@@ -1,4 +1,9 @@
-﻿using NUnit.Framework;
+﻿using Business;
+using Data;
+using Data.Models;
+using Moq;
+using NUnit.Framework;
+using System.Linq;
 
 namespace SchoolManagementSystem.NUnitTests.Business
 {
@@ -6,9 +11,8 @@ namespace SchoolManagementSystem.NUnitTests.Business
     class StudentBllTests
     {
         [Test]
-        public void GetStudent_ReturnsStudent()
-        {
-            //TODO
+        public void GetAll_Contains_ListOfStudents()
+        {           
         }
     }
 }

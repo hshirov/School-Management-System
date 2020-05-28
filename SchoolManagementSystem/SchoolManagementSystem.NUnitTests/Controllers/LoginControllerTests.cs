@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
-namespace Tests.Controllers
+namespace SchoolManagementSystem.NUnitTests.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class LoginControllerTests
     {
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
         }
