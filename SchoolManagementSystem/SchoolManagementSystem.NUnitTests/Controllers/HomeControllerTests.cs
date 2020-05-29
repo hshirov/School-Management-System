@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 using NUnit.Framework;
 using SchoolManagementSystem.Controllers;
 using Business;
-using System.Web.Mvc;
 
 namespace SchoolManagementSystem.NUnitTests.Controllers
 {

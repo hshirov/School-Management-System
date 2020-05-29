@@ -5,8 +5,8 @@ namespace SchoolManagementSystem.Controllers
 {
     public class AdminPanelController : Controller
     {
-        private readonly TeacherBll _teacherBll;
-        private readonly StudentBll _studentBll;
+        private readonly ITeacherBll _teacherBll;
+        private readonly IStudentBll _studentBll;
 
         public AdminPanelController()
         {

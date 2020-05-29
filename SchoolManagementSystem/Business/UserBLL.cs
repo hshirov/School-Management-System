@@ -2,7 +2,7 @@
 
 namespace Business
 {
-    public class UserBll
+    public class UserBll : IUserBll
     {
         /// <summary>
         /// Used for password encryption

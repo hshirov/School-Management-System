@@ -5,7 +5,7 @@ namespace SchoolManagementSystem.Controllers
 {
     public class ClassroomController : Controller
     {
-        private readonly StudentBll _studentBll;
+        private readonly IStudentBll _studentBll;
 
         public ClassroomController()
         {

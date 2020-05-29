@@ -7,8 +7,8 @@ namespace SchoolManagementSystem.Controllers
 {
     public class RegisterController : Controller
     {
-        private readonly StudentBll _studentBll;
-        private readonly TeacherBll _teacherBll;
+        private readonly IStudentBll _studentBll;
+        private readonly ITeacherBll _teacherBll;
 
         public RegisterController()
         {

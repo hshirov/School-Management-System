@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Business
 {
-    public class TeacherBll
+    public class TeacherBll : ITeacherBll
     {
         private SchoolDbContext _dbContext;
         private readonly UserBll _userBll;
