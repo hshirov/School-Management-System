@@ -17,6 +17,10 @@ namespace Business
             _userBll = new UserBll();
         }
 
+        /// <summary>
+        /// Finds the first student in the table based on the given email and password in User.
+        /// </summary>
+        /// <param name="user">Stores email and password.</param>
         public Student GetStudent(User user)
         {
             string password = _userBll.HashPassword(user.PasswordHash);
@@ -27,6 +31,10 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Finds the first student in the table based on the given id
+        /// </summary>
+        /// <param name="id">Stores id.</param>
         public Student GetStudent(int id)
         {
             using (_dbContext = new SchoolDbContext())
@@ -36,6 +44,9 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Returns every student from the database
+        /// </summary>
         public List<Student> GetAll()
         {
             using (_dbContext = new SchoolDbContext())
@@ -45,6 +56,10 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Finds a student with the given ID and returns every student from his class.
+        /// </summary>
+        /// <param name="id">Stores id.</param>
         public List<Student> GetStudentsFromClass(int id)
         {
             Student student = GetStudent(id);
@@ -60,6 +75,10 @@ namespace Business
             return studentsFromClass;
         }
 
+        /// <summary>
+        /// Finds a student with the given classNumber and classLetter and returns every student from his class.
+        /// </summary>
+        /// <param name="classNumber">Stores student grade.</param> <param name="classLetter">Stores student grade class.</param>
         public List<Student> GetStudentsFromClass(int classNumber, string classLetter)
         {
             List<Student> studentsFromClass;
@@ -71,6 +90,10 @@ namespace Business
             return studentsFromClass;
         }
 
+        /// <summary>
+        /// Turns a instance of Student to a Person, which holds all the matching parameters from students and teachers
+        /// </summary>
+        /// <param name="id">Stores id.</param>
         public Person GetPerson(int id)
         {
             Student student = GetStudent(id);
@@ -88,6 +111,10 @@ namespace Business
             return person;
         }
 
+        /// <summary>
+        /// Checks if there is a student with the same email.
+        /// </summary>
+        /// <param name="email">Stores email.</param>
         public bool IsEmailInUse(string email)
         {
             using (_dbContext = new SchoolDbContext())
@@ -96,6 +123,10 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Adds a student profile to the database.
+        /// </summary>
+        /// <param name="student">Stores student information.</param>
         public void AddStudent(Student student)
         {
             student.PasswordHash = _userBll.HashPassword(student.PasswordHash);
@@ -106,6 +137,10 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Updates the student profile information.
+        /// </summary>
+        /// <param name="student">Stores student information.</param>
         public void UpdateStudent(Student student)
         {
             student.Email = GetStudent(student.Id).Email;
@@ -119,6 +154,10 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Deletes student from the database.
+        /// </summary>
+        /// <param name="id">Stores id.</param>
         public void DeleteStudent(int id)
         {
             Student student = GetStudent(id);
@@ -130,6 +169,10 @@ namespace Business
             }
         }
 
+        /// <summary>
+        /// Checks if the student password matches the one in the database
+        /// </summary>
+        /// <param name="student">Stores student information.</param>
         public bool IsPasswordValid(Student student)
         {
             string userPassword = GetStudent(student.Id).PasswordHash;
