@@ -7,7 +7,7 @@ developed on ASP.NET using C# and MS SQL Server with MVC structure.
 
 ---
 
-##Contributors
+## Contributors
 - Veselin Inzov <veselin.inzov@gmail.com>
 - Gancho Purvanov <gaci@abv.bg>
 - Hristo Shirov <hshirov@abv.bg>
