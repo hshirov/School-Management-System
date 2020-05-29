@@ -18,7 +18,8 @@ namespace SchoolManagementSystem.Controllers
             {
                 return RedirectToAction("Classmates");
             }
-            else if (Session["teacherID"] != null)
+
+            if (Session["teacherID"] != null)
             {
                 return RedirectToAction("Classes");
             }
@@ -27,9 +28,9 @@ namespace SchoolManagementSystem.Controllers
         }
 
         /// <summary>
-        /// Will contain all the students that are for the same class as the logged in student
+        /// Will contain all the students that are for the same class as the logged in student.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>To student class View.</returns>
         public ActionResult Classmates()
         {
             if (Session["studentID"] == null && Session["teacherID"] == null)
@@ -41,11 +42,11 @@ namespace SchoolManagementSystem.Controllers
         }
 
         /// <summary>
-        /// Allows the user the see every student from the given class information
+        /// Allows the user the see every student from the given class information.
         /// </summary>
         /// <param name="classNumber"></param>
         /// <param name="classLetter"></param>
-        /// <returns></returns>
+        /// <returns>To teacher classes View.</returns>
         public ActionResult Classes(int classNumber = 7, string classLetter = "A")
         {
             if (Session["studentID"] == null && Session["teacherID"] == null)
@@ -57,10 +58,10 @@ namespace SchoolManagementSystem.Controllers
         }
 
         /// <summary>
-        /// Contains more detailed information about the student
+        /// Contains more detailed information about the student.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>To student details View.</returns>
         public ActionResult StudentDetails(int id = 1)
         {
             //Can't access if you're not logged in

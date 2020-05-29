@@ -14,13 +14,18 @@ namespace SchoolManagementSystem.Controllers
             _teacherBll = new TeacherBll();
         }
 
+        /// <summary>
+        /// Checks session 
+        /// </summary>
+        /// <returns>To View session.</returns>
         public ActionResult Index()
         {
             if (Session["studentID"] != null)
             {
                 return View(_studentBll.GetPerson((int)Session["studentID"]));
             }
-            else if (Session["teacherID"] != null)
+
+            if (Session["teacherID"] != null)
             {
                 return View(_teacherBll.GetPerson((int)Session["teacherID"]));
             }

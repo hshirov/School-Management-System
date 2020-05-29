@@ -20,6 +20,10 @@ namespace SchoolManagementSystem.Controllers
             return View("Home");
         }
 
+        /// <summary>
+        /// Gets information for all teachers.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Teachers()
         {
             if(Session["adminId"] == null)
@@ -29,6 +33,10 @@ namespace SchoolManagementSystem.Controllers
             return View(_teacherBll.GetAll());
         }
 
+        /// <summary>
+        /// Gets information for all students.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Students()
         {
             if (Session["adminId"] == null)
@@ -39,9 +47,9 @@ namespace SchoolManagementSystem.Controllers
         }
 
         /// <summary>
-        /// Deactivates a teacher profile of the given ID and redirects to the same page
+        /// Deactivates a teacher profile of the given ID and redirects to the same page.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Stores id.</param>
         /// <returns></returns>
         public ActionResult DeleteTeacher(int id)
         {
@@ -54,7 +62,7 @@ namespace SchoolManagementSystem.Controllers
         }
 
         /// <summary>
-        /// Deactivates a student profile of the given ID and redirects to the same page
+        /// Deactivates a student profile of the given ID and redirects to the same page.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
