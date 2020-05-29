@@ -4,11 +4,6 @@ namespace Business
 {
     public class UserBll : IUserBll
     {
-        /// <summary>
-        /// Used for password encryption
-        /// </summary>
-        /// <param name="text">The raw password input.</param>
-        /// <returns>64 character SHA256 Hash.</returns>
         public string HashPassword(string text)
         {
             if (string.IsNullOrEmpty(text))

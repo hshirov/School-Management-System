@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Business
+﻿namespace Business
 {
     public interface IUserBll
     {
+        /// <summary>
+        /// Used for password encryption
+        /// </summary>
+        /// <param name="text">The raw password input.</param>
+        /// <returns>64 character SHA256 Hash.</returns>
         string HashPassword(string text);
     }
 }

@@ -17,10 +17,6 @@ namespace Business
             _userBll = new UserBll();
         }
 
-        /// <summary>
-        /// Finds the first teacher in the table based on the given email and password in User.
-        /// </summary>
-        /// <param name="user">Stores email and password.</param>
         public Teacher GetTeacher(User user)
         {
             string password = _userBll.HashPassword(user.PasswordHash);
@@ -31,10 +27,6 @@ namespace Business
             }
         }
 
-        /// <summary>
-        /// Finds the first teacher in the table based on the given id in User.
-        /// </summary>
-        /// <param name="id">Stores id.</param>
         public Teacher GetTeacher(int id)
         {
             using (_dbContext = new SchoolDbContext())
@@ -44,9 +36,6 @@ namespace Business
             }
         }
 
-        /// <summary>
-        /// Returns every teacher from the database
-        /// </summary>
         public List<Teacher> GetAll()
         {
             using (_dbContext = new SchoolDbContext())
@@ -56,9 +45,6 @@ namespace Business
             }
         }
 
-        /// <summary>
-        /// Turns a instance of Teacher to a Person, which holds all the matching parameters from students and teachers
-        /// </summary>
         public Person GetPerson(int id)
         {
             Teacher teacher = GetTeacher(id);
@@ -76,9 +62,6 @@ namespace Business
             return person;
         }
 
-        /// <summary>
-        /// Checks if there is a teacher with the same email.
-        /// </summary>
         public bool IsEmailInUse(string email)
         {
             using (_dbContext = new SchoolDbContext())
@@ -87,9 +70,6 @@ namespace Business
             }
         }
 
-        /// <summary>
-        /// Adds a teacher profile.
-        /// </summary>
         public void AddTeacher(Teacher teacher)
         {
             teacher.PasswordHash = _userBll.HashPassword(teacher.PasswordHash);
@@ -100,13 +80,8 @@ namespace Business
             }
         }
 
-        /// <summary>
-        /// Updates the teacher profile information.
-        /// </summary>
         public void UpdateTeacher(Teacher teacher)
         {
-            //DON'T TOUCH!
-            //! THIS ADDS FIELDS THAT ARE EMPTY AND CANT BE CHANGED !
             teacher.Email = GetTeacher(teacher.Id).Email;
             teacher.PasswordHash = GetTeacher(teacher.Id).PasswordHash;
             teacher.Subject = GetTeacher(teacher.Id).Subject;
@@ -117,9 +92,6 @@ namespace Business
             }
         }
 
-        /// <summary>
-        /// Deletes teacher profile.
-        /// </summary>
         public void DeleteTeacher(int id)
         {
             Teacher teacher = GetTeacher(id);
@@ -131,9 +103,6 @@ namespace Business
             }
         }
 
-        /// <summary>
-        /// Checks if the user password is a valid password.
-        /// </summary>
         public bool IsPasswordValid(Teacher teacher)
         {
             string userPassword = GetTeacher(teacher.Id).PasswordHash;
