@@ -38,6 +38,11 @@ namespace SchoolManagementSystem.Controllers
             return View(_studentBll.GetAll());
         }
 
+        /// <summary>
+        /// Deactivates a teacher profile of the given ID and redirects to the same page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult DeleteTeacher(int id)
         {
             if (Session["adminId"] == null)
@@ -48,6 +53,11 @@ namespace SchoolManagementSystem.Controllers
             return RedirectToAction("Teachers");
         }
 
+        /// <summary>
+        /// Deactivates a student profile of the given ID and redirects to the same page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult DeleteStudent(int id)
         {
             if (Session["adminId"] == null)

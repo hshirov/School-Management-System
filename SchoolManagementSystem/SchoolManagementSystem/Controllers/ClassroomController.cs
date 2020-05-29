@@ -26,6 +26,10 @@ namespace SchoolManagementSystem.Controllers
             return RedirectToAction("Index", "Login");
         }
 
+        /// <summary>
+        /// Will contain all the students that are for the same class as the logged in student
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Classmates()
         {
             if (Session["studentID"] == null && Session["teacherID"] == null)
@@ -36,6 +40,12 @@ namespace SchoolManagementSystem.Controllers
             return View(_studentBll.GetStudentsFromClass((int)Session["studentID"]));
         }
 
+        /// <summary>
+        /// Allows the user the see every student from the given class information
+        /// </summary>
+        /// <param name="classNumber"></param>
+        /// <param name="classLetter"></param>
+        /// <returns></returns>
         public ActionResult Classes(int classNumber = 7, string classLetter = "A")
         {
             if (Session["studentID"] == null && Session["teacherID"] == null)
@@ -46,6 +56,11 @@ namespace SchoolManagementSystem.Controllers
             return View(_studentBll.GetStudentsFromClass(classNumber, classLetter));
         }
 
+        /// <summary>
+        /// Contains more detailed information about the student
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult StudentDetails(int id = 1)
         {
             //Can't access if you're not logged in
